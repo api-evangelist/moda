@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moda.dev/ingestion/direct-api
+docs: https://docs.moda.dev/data-api/overview
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  api_key_prefix: moda_sk_
+  key_management: https://moda.dev/settings
+  oauth2_flows: []
+notes: >-
+  Moda authenticates with a single tenant API key (prefix moda_sk_) obtained from
+  Settings at https://moda.dev/settings. The Ingestion API presents the key as an
+  HTTP Bearer credential; the read-only Data API and CLI present the same key via
+  the x-api-key header or the MODA_API_KEY environment variable. No OAuth2 / OpenID
+  Connect scope surface is documented, so there is no scopes/ artifact.
+schemes:
+- name: IngestBearer
+  type: http
+  scheme: bearer
+  in: header
+  header: Authorization
+  format: "Bearer <MODA_API_KEY>"
+  used_by: Moda Ingestion API (POST /v1/ingest)
+  source: https://docs.moda.dev/ingestion/direct-api
+- name: DataApiKey
+  type: apiKey
+  in: header
+  name: x-api-key
+  env: MODA_API_KEY
+  used_by: Moda Data API + CLI + MCP server
+  source: https://docs.moda.dev/data-api/overview

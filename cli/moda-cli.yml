@@ -1,0 +1,78 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moda.dev/data-api/cli
+name: Moda CLI
+binary: moda
+package: "@moda-ai/cli"
+install:
+- method: npm-global
+  command: npm install -g @moda-ai/cli
+- method: npx
+  command: npx -p @moda-ai/cli moda overview
+- method: agent-skill
+  command: npx skills add ModaLabs/moda-cli
+authentication:
+  scheme: api-key
+  env: MODA_API_KEY
+  example: export MODA_API_KEY="moda_sk_your_key_here"
+environment:
+- name: MODA_API_KEY
+  required: true
+  description: Authentication credential (API key).
+- name: MODA_BASE_URL
+  required: false
+  default: https://moda.dev
+  description: Base URL for the Data API.
+- name: MODA_CLI_TIPS
+  required: false
+  description: Set to 0 to hide post-command tips.
+commands:
+- group: Analytics & Overview
+  commands:
+  - name: overview
+    description: High-level dashboard with trends, frustration rates, and activity.
+  - name: frustrations
+    description: User frustration detections with evidence.
+  - name: tool-failures
+    description: Tool failure overview summary.
+  - name: tool-failure-detail
+    args: "<tool_name>"
+    description: Detailed failure info for a specific tool.
+- group: Conversations
+  commands:
+  - name: conversations
+    description: Search and filter conversations by multiple criteria.
+  - name: cluster-conversations
+    args: "<node_id>"
+    description: List conversations in a specific cluster.
+  - name: context
+    args: "<conversation_id>"
+    description: Get a message window from a conversation.
+  - name: world-state
+    args: "<conversation_id>"
+    description: Retrieve structured slots and event logs.
+- group: Topic Organization
+  commands:
+  - name: clusters
+    description: Browse the topic cluster hierarchy.
+  - name: search
+    args: "<query>"
+    description: Keyword, semantic, or hybrid message retrieval.
+- group: Prompt Management
+  commands:
+  - name: prompts init
+    description: Create .moda/prompts.yml.
+  - name: prompts status
+    description: Read-only local status.
+  - name: prompts diff
+    description: Show local changes.
+  - name: prompts sync
+    description: Upload prompt versions (supports --watch to auto-sync on file changes).
+  - name: prompts promote
+    args: "<name>"
+    description: Move environment labels to versions.
+- group: Feedback & Support
+  commands:
+  - name: feedback
+    args: '"<note>"'
+    description: Report data quality or CLI issues.

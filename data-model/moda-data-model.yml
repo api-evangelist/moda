@@ -1,0 +1,68 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moda.dev/data-api/overview
+notes: >-
+  Entity graph derived from the Moda Data API resource surface (Overview,
+  Conversations, World State, Clusters, Frustrations, Tool Failures, Users) and the
+  ingest event shape. No published OpenAPI exists, so relationships are inferred from
+  documented resources and the id fields on ingest events.
+entities:
+- name: Conversation
+  id_field: conversation_id
+  description: A threaded session of messages/events grouped by conversation_id.
+  relationships:
+  - has_many: Event
+    via: conversation_id
+  - has_one: WorldState
+    via: conversation_id
+  - belongs_to: User
+    via: user_id
+  - belongs_to: Cluster
+    via: node_id
+- name: Event
+  id_field: trace_id
+  description: A single ingested message or tool_call/channel/email/call event.
+  fields: [conversation_id, role, message, content, timestamp, trace_id, user_id, input_tokens, output_tokens, reasoning_tokens, model, provider, environment, prompt_id, messageType]
+  relationships:
+  - belongs_to: Conversation
+    via: conversation_id
+  - belongs_to: User
+    via: user_id
+  - belongs_to: Prompt
+    via: prompt_id
+- name: WorldState
+  description: Structured slots and event logs for a conversation.
+  relationships:
+  - belongs_to: Conversation
+    via: conversation_id
+- name: Cluster
+  id_field: node_id
+  description: A node in the topic cluster hierarchy (category / subcategory / cluster).
+  relationships:
+  - has_many: Conversation
+    via: node_id
+  - has_many: Cluster
+    via: parent node (hierarchy)
+- name: Frustration
+  description: A detected user-frustration event with trigger turn, trajectory, affected goal, and counterfactual.
+  relationships:
+  - belongs_to: Conversation
+    via: conversation_id
+- name: ToolFailure
+  id_field: tool_name
+  description: A tool-call failure, with per-tool detail and an error-subtype taxonomy.
+  relationships:
+  - belongs_to: Conversation
+    via: conversation_id
+- name: User
+  id_field: user_id
+  description: An end user with analytics, health scoring, and frustration tracking.
+  relationships:
+  - has_many: Conversation
+    via: user_id
+- name: Prompt
+  id_field: prompt_id
+  description: A managed prompt with versions and environment labels, synced via the CLI/SDK.
+  relationships:
+  - has_many: Event
+    via: prompt_id

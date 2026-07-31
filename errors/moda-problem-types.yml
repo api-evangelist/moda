@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moda.dev/ingestion/direct-api
+format: custom-json
+envelope:
+  description: >-
+    Moda Ingestion API responses use a flat JSON envelope, not RFC 9457
+    application/problem+json.
+  fields:
+    success: boolean (false on error)
+    count: integer (events accepted; 0 on error)
+    message: string (human-readable error description)
+    requestId: string (UUID for tracing/support)
+    retryable: boolean (whether the client should retry with backoff)
+  example:
+    success: false
+    count: 0
+    message: Invalid or missing API key
+    requestId: 550e8400-e29b-41d4-a716-446655440000
+    retryable: false
+problems:
+- status: 400
+  title: Invalid request format
+  retryable: false
+  description: The request body was malformed or missing required event fields.
+  source_operation: POST https://moda-ingest.modas.workers.dev/v1/ingest
+- status: 401
+  title: Invalid or missing API key
+  retryable: false
+  description: The Authorization Bearer key was absent, malformed, or not recognized.
+  source_operation: POST https://moda-ingest.modas.workers.dev/v1/ingest
+- status: 413
+  title: Request too large
+  retryable: false
+  description: The event batch exceeded the maximum payload size; split into smaller batches.
+  source_operation: POST https://moda-ingest.modas.workers.dev/v1/ingest
+- status: 503
+  title: Service unavailable
+  retryable: true
+  description: Temporary backend unavailability; retry with exponential backoff.
+  source_operation: POST https://moda-ingest.modas.workers.dev/v1/ingest

@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moda.dev/ingestion/direct-api
+authentication:
+  style: api-key
+  ingest: Authorization Bearer header
+  data_api: x-api-key header / MODA_API_KEY env
+  ref: authentication/moda-authentication.yml
+environments:
+  description: >-
+    Events carry an optional `environment` field (e.g. staging, production) so
+    traffic is separable per deployment. This is environment tagging on ingest,
+    not a separate test/live key pair.
+  field: environment
+conversation_threading:
+  description: >-
+    Every event is grouped by a caller-supplied conversation_id (session key), the
+    core threading primitive; role is one of user/assistant/system. SDKs set
+    conversation_id then flush.
+  key_field: conversation_id
+request_id_tracing:
+  description: Every ingest response returns a requestId (UUID) for support/tracing.
+  field: requestId
+error_envelope:
+  description: Flat JSON envelope with success/count/message/requestId/retryable.
+  ref: errors/moda-problem-types.yml
+retries:
+  description: >-
+    Errors carry an explicit `retryable` boolean. 503 responses are retryable with
+    exponential backoff; 400/401/413 are non-retryable.
+  signal_field: retryable
+idempotency:
+  supported: false
+  notes: No idempotency-key header or dedupe contract is documented for the ingest API.
+batching:
+  description: The ingest endpoint accepts an `events[]` array so multiple messages post in one call.
+  field: events
+ingestion_protocols:
+- Direct HTTP API (POST /v1/ingest)
+- OpenTelemetry / OTLP HTTP
+- OpenLLMetry SDK (moda-ai, Node and Python)
+cross_links:
+  authentication: authentication/moda-authentication.yml
+  errors: errors/moda-problem-types.yml
+  lifecycle: lifecycle/moda-lifecycle.yml
+  data_model: data-model/moda-data-model.yml

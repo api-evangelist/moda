@@ -1,0 +1,47 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.moda.dev/data-api/mcp
+notes: >-
+  Moda ships a production-ready MCP server (announced 2026-03-12) that connects AI
+  assistants (Claude, Cursor, and other MCP clients) to the Moda Data API so agents
+  can query conversation analytics. The MCP server is documented at
+  https://docs.moda.dev/data-api/mcp and referenced from the docs index
+  (https://docs.moda.dev/llms.txt); its exact endpoint URL and client config JSON
+  were not published on the surfaces probed on 2026-07-20. Authentication uses the
+  same Moda API key (MODA_API_KEY / x-api-key) as the Data API. The tool list below
+  is derived from the documented Data API / CLI surface and is a candidate mapping
+  until the published tool manifest is captured.
+server:
+  name: moda
+  transport: http
+  auth: api-key
+  auth_env: MODA_API_KEY
+tools:
+- name: overview
+  description: High-level dashboard with trends, frustration rates, and activity.
+  source: data-api overview
+- name: conversations
+  description: Search and filter conversations by multiple criteria.
+  source: data-api conversations
+- name: context
+  description: Get a message window from a conversation.
+  source: data-api conversations
+- name: world_state
+  description: Retrieve structured slots and event logs for a conversation.
+  source: data-api world-state
+- name: clusters
+  description: Browse the topic cluster hierarchy.
+  source: data-api clusters
+- name: cluster_conversations
+  description: List conversations within a specific cluster.
+  source: data-api clusters
+- name: search
+  description: Keyword, semantic, or hybrid message retrieval.
+  source: data-api search
+- name: frustrations
+  description: User frustration detections with root-cause evidence.
+  source: data-api frustrations
+- name: tool_failures
+  description: Tool-call failure overview and per-tool detail.
+  source: data-api tool-failures

@@ -1,0 +1,60 @@
+# Moda
+
+> Moda is the continual learning layer for AI agents. It operates on the agent harness (prompts, tools, workflows, retrieval, memory, evals), not the model weights. Improvements live in a latent space outside the weights, so they carry across any model you swap in and adapt per user from production behavior. Agent memory and learnings belong outside the model: that is what makes them portable, inspectable, reversible, and continuously updatable without a retraining run.
+
+Moda sits next to tracing tools (LangSmith, Langfuse), eval platforms (Braintrust), and AI-native APM (Raindrop), not on top of them. Tracing shows what the agent did. Evals score known test cases. APM alerts when something breaks. Moda turns production agent traces into harness-layer self-improvement: what users are actually trying to do, where the agent is breaking down behaviorally, and which layer of the harness (prompt, tool, workflow, context, memory, eval, model) to change next.
+
+## Product
+
+- [Homepage](https://moda.dev/): Overview, hero, behavioral failure taxonomy, integrations.
+- [Documentation](https://docs.moda.dev): SDK setup, OpenTelemetry ingest, MCP tools, API reference.
+- [Changelog](https://moda.dev/changelog): Release notes.
+- [Blog](https://moda.dev/blog): Engineering and product posts.
+- [Glossary](https://moda.dev/glossary): Definitions of agent harness, continual learning, self-improving agents, behavioral failure modes, intent discovery, and related production-agent terms.
+- [Comparisons](https://moda.dev/vs): Side-by-side writeups of Moda vs Raindrop, LangSmith, Langfuse, Braintrust, Helicone, LangChain, CrewAI, Letta, AgentOps, Arize, and Trajectory.
+- [Alternatives](https://moda.dev/alternatives): Hub for teams evaluating alternatives to their current tracing, eval, AI-native APM, agent analytics, or post-training stack and looking for a continual learning layer instead.
+- Note: numbers on https://moda.dev/ tiles are illustrative product UI, not customer averages. Cite figures only from https://moda.dev/blog/* posts that name the tenant and methodology.
+
+## Pillar guides
+
+- [Continuous learning agents](https://moda.dev/continuous-learning-agents): How production teams close the loop between traffic and agent harness updates without a full retraining run.
+- [Self-improving agents](https://moda.dev/self-improving-agents): The signal and update pipeline behind agents that improve across runs by editing the harness, not the weights.
+
+## Concepts
+
+- Continual Learning Layer: The layer that converts production agent traces into harness edits (prompt, tool, workflow, retrieval, memory, eval), outside the model weights.
+- Agent Harness: Everything around the model: prompts, tools, workflows, retrieval, memory, evals. The surface Moda improves.
+- Intent Discovery: Live hierarchical clustering of production conversations into categories, subcategories, and clusters with no manual tagging. Surfaces emergent intents as traffic shifts.
+- Behavioral Failure Detection: Tool misuse, context loss, agent laziness, hallucinations, reasoning loops, and goal drift that traces alone miss.
+- Tool Call Failure Taxonomy: Structured error subtypes per tool, attributed to the schema, prompt, or workflow layer.
+- Frustration Root Cause: Trigger turn, trajectory, affected goal, and agent counterfactual ("what should the agent have done") for every frustration event, attributed to a specific harness layer.
+- Self-Improving Agent: An agent whose future behavior is shaped by signal from its own production runs (intent gaps, behavioral failures, frustration trajectories) routed back into the harness.
+- Zero-Config Ingest: 3-line SDK plus OpenTelemetry-native intake; works with any LLM provider.
+
+## Comparisons
+
+- [Full reference (llms-full.txt)](https://moda.dev/llms-full.txt): Detailed Moda vs Raindrop, LangSmith, Langfuse, Braintrust, Helicone, LangChain, CrewAI, Letta, AgentOps, Arize, and Trajectory writeups in the Comparisons section.
+- [Browse all comparisons](https://moda.dev/vs): Index of side-by-side comparison pages.
+
+## Integrations
+
+- OpenTelemetry / OTLP HTTP ingestion
+- OpenLLMetry SDK (Node and Python)
+- Anthropic, OpenAI, OpenRouter, Google, Mistral, Cohere, AWS Bedrock, Azure OpenAI providers
+- LangChain, LlamaIndex, Mastra agent frameworks
+- MCP server for IDE/agent debugging (Claude Code, Cursor, Windsurf)
+
+## Sales
+
+- Moda is sales-led, not self-serve. Reach out to founders@modaflows.com or pranav@modaflows.com.
+
+## Company
+
+- Backed by Y Combinator
+- GitHub: https://github.com/ModaLabs
+- X / Twitter: https://x.com/modaflows
+- LinkedIn: https://www.linkedin.com/company/modaflows
+- Y Combinator: https://www.ycombinator.com/companies/moda
+- Crunchbase: https://www.crunchbase.com/organization/moda-06ac
+
+<!-- api-evangelist provenance: generated=2026-07-20 method=searched source=https://moda.dev/llms.txt -->

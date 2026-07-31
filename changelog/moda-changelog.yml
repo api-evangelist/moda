@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: searched
+source: https://moda.dev/changelog
+scheme: date-based
+current_version: null
+entries:
+- date: '2026-07-11'
+  breaking: true
+  highlights: Weekly Reports dashboard and snapshot pipeline removed; old report URLs redirect to Ask.
+- date: '2026-07-05'
+  breaking: false
+  highlights: CLI authentication simplified — one-click browser approval, Google sign-in, 30-day sliding session expiry.
+- date: '2026-05-21'
+  breaking: false
+  highlights: Fixed navigation controls between adjacent conversations on detail pages.
+- date: '2026-05-20'
+  breaking: false
+  highlights: Resolved Tool Call Failures dashboard loading issue caused by endpoint errors.
+- date: '2026-05-17'
+  breaking: false
+  highlights: Multi-day conversation traces now include date headers with midnight dividers.
+- date: '2026-05-16'
+  breaking: false
+  highlights: Added toggle between synopsis and full chronological trace views in conversation details.
+- date: '2026-04-23'
+  breaking: false
+  highlights: Launched Users feature — analytics, health scoring, per-user detail pages, frustration tracking.
+- date: '2026-04-17'
+  breaking: false
+  highlights: Migrated analytics pipeline to Cloudflare Containers with scale-to-zero between jobs.
+- date: '2026-03-30'
+  breaking: false
+  highlights: Made read-only Data API accessible from frontend domain with documented CLI.
+- date: '2026-03-12'
+  breaking: false
+  highlights: Released production-ready MCP server for Claude and Cursor integration.
+- date: '2026-03-10'
+  breaking: false
+  highlights: Deployed real-time frustration detection with root-cause attribution.
+- date: '2026-02-19'
+  breaking: false
+  highlights: Introduced automatic agent tool-failure detection with dashboard.

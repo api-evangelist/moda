@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: probe of /.well-known/ paths on moda.dev and the ingest host
+hosts:
+- host: https://moda.dev
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://moda-ingest.modas.workers.dev
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+notes: No /.well-known discovery documents were published on the probed hosts as of 2026-07-20.

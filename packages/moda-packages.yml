@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moda.dev/quickstart
+packages:
+- language: typescript
+  registry: npm
+  name: moda-ai
+  url: https://www.npmjs.com/package/moda-ai
+  install: npm install moda-ai
+  version: 1.15.1
+  official: true
+  description: Official TypeScript/Node.js SDK for Moda AI analytics with automatic conversation threading.
+  repository: https://github.com/moda/moda-node
+- language: python
+  registry: pypi
+  name: moda-ai
+  url: https://pypi.org/project/moda-ai/
+  install: pip install moda-ai
+  version: 0.1.4.2
+  official: true
+  description: Moda SDK - LLM Observability with Automatic Conversation Threading.
+  repository: https://github.com/ModaLabs/moda-python
+- language: typescript
+  registry: npm
+  name: "@moda-ai/cli"
+  url: https://www.npmjs.com/package/@moda-ai/cli
+  install: npm install -g @moda-ai/cli
+  official: true
+  description: First-party Moda command-line interface (the `moda` binary) for analytics and prompt sync.
+  repository: https://github.com/ModaLabs

@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moda.dev/llms.txt
+standards:
+- id: opentelemetry-otlp
+  conforms: true
+  evidence: >-
+    Moda ingests telemetry over OpenTelemetry / OTLP HTTP and ships an OpenLLMetry
+    SDK (Node and Python); OTLP-native intake is documented.
+- id: model-context-protocol
+  conforms: true
+  evidence: Ships a production MCP server for Claude/Cursor (docs.moda.dev/data-api/mcp).
+- id: oauth2
+  conforms: false
+  evidence: Authentication is API-key only (Bearer / x-api-key); no OAuth2 flows documented.
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error responses use a custom flat JSON envelope, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returned 404 on 2026-07-20.
+compliance:
+  published_certifications: []
+  notes: >-
+    The public security page states data is encrypted in transit and at rest and
+    scoped per tenant, and that "compliance documentation and our security
+    questionnaire are available on request" — no named certification (SOC 2, ISO
+    27001, HIPAA, PCI, FedRAMP, GDPR) is published, so no Compliance pointer is
+    emitted.
