@@ -57,6 +57,10 @@ apis:
   baseURL: https://moda-ingest.modas.workers.dev
   tags:
   - Ingestion
+  - Event
+  - Observability
+  tags_raw:
+  - Ingestion
   - Events
   - Observability
   properties:
@@ -75,6 +79,10 @@ apis:
   humanURL: https://docs.moda.dev/data-api/overview
   baseURL: https://moda.dev
   tags:
+  - Analytics
+  - Data API
+  - Read Only
+  tags_raw:
   - Analytics
   - Data API
   - Read-only
