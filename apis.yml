@@ -11,6 +11,17 @@ description: >-
   ingestion API, a read-only Data API for analytics, first-party Python and
   TypeScript SDKs, a CLI, a production MCP server, and Claude Code skills so teams
   and agents can query and act on their agent analytics.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
