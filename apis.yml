@@ -92,7 +92,7 @@ apis:
   tags:
   - Analytics
   - Data API
-  - Read-only
+  - Read Only
   tags_raw:
   - Analytics
   - Data API
