@@ -89,7 +89,6 @@ apis:
     tool failures. Authenticated with an API key via the x-api-key header or the
     MODA_API_KEY environment variable; wrapped by the Moda CLI and MCP server.
   humanURL: https://docs.moda.dev/data-api/overview
-  baseURL: https://moda.dev
   tags:
   - Analytics
   - Data API
